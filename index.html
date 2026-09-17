@@ -1526,13 +1526,53 @@ function LayarTentang() {
  BERANDA
  ============================================================ */
 function LayarBeranda({ pindah }) {
- const menu = [
- { key: "napas", judul: "Pernapasan terpandu", sub: "Napas kotak, 4-7-8, napas tenang", ikon: "〇", warna: "var(--primary-soft)" },
- { key: "scan", judul: "Body scan", sub: "Perjalanan kesadaran dengan panduan suara", ikon: "↓", warna: "var(--mint-soft)" },
- { key: "jurnal", judul: "Jurnal refleksi emosi", sub: "Namai perasaanmu, dapatkan validasi", ikon: "", warna: "#F1EDF8" },
- { key: "ground", judul: "Grounding 5-4-3-2-1", sub: "Dari membara menuju tenang", ikon: "⌖", warna: "var(--peach-soft)" },
- { key: "syukur", judul: "Toples syukur & afirmasi", sub: "Simpan hal baik, ambil di hari berat", ikon: "", warna: "var(--primary-soft)" },
- ];
+   const IKON_MENU = {
+    napas: (
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+        <circle cx="13" cy="13" r="10" stroke="#8D9BD3" strokeWidth="2"/>
+        <circle cx="13" cy="13" r="5" fill="#8D9BD3" opacity="0.35"/>
+        <circle cx="13" cy="13" r="2" fill="#5E6BA8"/>
+      </svg>
+    ),
+    scan: (
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+        <path d="M13 3 C13 3 13 23 13 23" stroke="#9CC8B4" strokeWidth="2" strokeLinecap="round"/>
+        <path d="M5 8 Q13 6 21 8" stroke="#9CC8B4" strokeWidth="1.5" strokeLinecap="round" fill="none"/>
+        <path d="M5 13 Q13 11 21 13" stroke="#9CC8B4" strokeWidth="1.5" strokeLinecap="round" fill="none"/>
+        <path d="M5 18 Q13 16 21 18" stroke="#9CC8B4" strokeWidth="1.5" strokeLinecap="round" fill="none"/>
+      </svg>
+    ),
+    jurnal: (
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+        <rect x="5" y="3" width="16" height="20" rx="3" stroke="#B09BD3" strokeWidth="2"/>
+        <path d="M9 9 L17 9" stroke="#B09BD3" strokeWidth="1.5" strokeLinecap="round"/>
+        <path d="M9 13 L17 13" stroke="#B09BD3" strokeWidth="1.5" strokeLinecap="round"/>
+        <path d="M9 17 L13 17" stroke="#B09BD3" strokeWidth="1.5" strokeLinecap="round"/>
+      </svg>
+    ),
+    ground: (
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+        <circle cx="13" cy="6" r="2.5" fill="#D97C6B"/>
+        <path d="M13 8.5 L13 16" stroke="#E0A46B" strokeWidth="2" strokeLinecap="round"/>
+        <path d="M13 16 Q8 19 5 22" stroke="#8FBF9F" strokeWidth="2" strokeLinecap="round"/>
+        <path d="M13 16 Q18 19 21 22" stroke="#8FBF9F" strokeWidth="2" strokeLinecap="round"/>
+        <path d="M3 22 L23 22" stroke="#7FA6D9" strokeWidth="2" strokeLinecap="round"/>
+      </svg>
+    ),
+    syukur: (
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+        <path d="M13 21 C13 21 4 15 4 9.5 C4 6.5 6.5 4 9.5 4 C11 4 12.5 4.8 13 6 C13.5 4.8 15 4 16.5 4 C19.5 4 22 6.5 22 9.5 C22 15 13 21 13 21Z" fill="#FFD6D6" stroke="#D97C6B" strokeWidth="1.5"/>
+      </svg>
+    ),
+  };
+
+const menu = [
+    { key: "napas", judul: "Pernapasan terpandu", sub: "Napas kotak, 4-7-8, napas tenang", warna: "var(--primary-soft)" },
+    { key: "scan", judul: "Body scan", sub: "Perjalanan kesadaran dengan panduan suara", warna: "var(--mint-soft)" },
+    { key: "jurnal", judul: "Jurnal refleksi emosi", sub: "Namai perasaanmu, dapatkan validasi", warna: "#F1EDF8" },
+    { key: "ground", judul: "Grounding 5-4-3-2-1", sub: "Dari membara menuju tenang", warna: "var(--peach-soft)" },
+    { key: "syukur", judul: "Toples syukur & afirmasi", sub: "Simpan hal baik, ambil di hari berat", warna: "var(--primary-soft)" },
+  ];
 
  return (
  <div className="fade">
@@ -1565,7 +1605,7 @@ function LayarBeranda({ pindah }) {
  width: 50, height: 50, borderRadius: 18, flexShrink: 0,
  background: m.warna, color: "var(--primary-deep)", fontSize: 22,
  display: "flex", alignItems: "center", justifyContent: "center",
- }}>{m.ikon}</div>
+              }}>{IKON_MENU[m.key]}</div>
  <div>
  <div className="display" style={{ fontSize: 15 }}>{m.judul}</div>
  <div style={{ color: "var(--muted)", fontSize: 13, marginTop: 2 }}>{m.sub}</div>
@@ -1588,9 +1628,10 @@ function LayarBeranda({ pindah }) {
  (Jurnal & fitur lain diakses dari kartu beranda, tidak dobel)
  ============================================================ */
 const TAB = [
- { key: "beranda", label: "Beranda", ikon: "⌂" },
- { key: "rekap", label: "Rekap", ikon: "" },
- { key: "tentang", label: "Tentang", ikon: "" },
+  { key: "beranda", label: "Home" },
+  { key: "jurnal", label: "Jurnal" },
+  { key: "rekap", label: "Rekap" },
+  { key: "tentang", label: "Tentang" },
 ];
 
 function DinamisApp() {
@@ -1703,7 +1744,7 @@ function DinamisApp() {
  <div>Musik: {hasilTes.musik}</div>
  </div>
  )}
- <p style={{ color: "var(--line)", fontSize: 10, marginTop: 14 }}>v22</p>
+ <p style={{ color: "var(--line)", fontSize: 10, marginTop: 14 }}>v24</p>
  </div>
  );
  }
@@ -1729,7 +1770,7 @@ function DinamisApp() {
  tentang: <LayarTentang />,
  }[layar];
 
- const tabAktif = layar === "rekap" ? "rekap" : layar === "tentang" ? "tentang" : "beranda";
+ const tabAktif = layar === "rekap" ? "rekap" : layar === "tentang" ? "tentang" : layar === "jurnal" ? "jurnal" : "beranda";
 
  return (
  <div style={{ minHeight: "100vh" }}>
