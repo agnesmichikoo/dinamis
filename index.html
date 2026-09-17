@@ -786,7 +786,7 @@ function LayarNapas() {
  </p>
  <Tombol variant="soft" onClick={() => setTahap("pilih")}>Latihan lagi</Tombol>
           <div style={{ marginTop: 10 }}>
-            <Tombol variant="ghost" onClick={() => window.dispatchEvent(new CustomEvent("ke-beranda"))}>
+            <Tombol variant="ghost" onClick={() => { window.location.href = window.location.pathname; }}>
               Kembali ke Beranda
             </Tombol>
           </div>
@@ -919,7 +919,7 @@ function LayarBodyScan() {
  </p>
  <Tombol variant="soft" onClick={() => setMode("pembuka")}>Ulangi</Tombol>
           <div style={{ marginTop: 10 }}>
-            <Tombol variant="ghost" onClick={() => window.dispatchEvent(new CustomEvent("ke-beranda"))}>
+            <Tombol variant="ghost" onClick={() => { window.location.href = window.location.pathname; }}>
               Kembali ke Beranda
             </Tombol>
           </div>
@@ -1239,7 +1239,7 @@ function LayarGrounding() {
  nyalakanLatar();
  }}>Mulai lagi</Tombol>
           <div style={{ marginTop: 10 }}>
-            <Tombol variant="ghost" onClick={() => window.dispatchEvent(new CustomEvent("ke-beranda"))}>
+            <Tombol variant="ghost" onClick={() => { window.location.href = window.location.pathname; }}>
               Kembali ke Beranda
             </Tombol>
           </div>
@@ -1765,7 +1765,7 @@ function DinamisApp() {
  <div>Musik: {hasilTes.musik}</div>
  </div>
  )}
- <p style={{ color: "var(--line)", fontSize: 10, marginTop: 14 }}>v26</p>
+ <p style={{ color: "var(--line)", fontSize: 10, marginTop: 14 }}>v27</p>
  </div>
  );
  }
