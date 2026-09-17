@@ -785,6 +785,11 @@ function LayarNapas() {
  {delta < 0 && " Kalau angkanya turun, itu bukan kegagalan — kadang saat melambat, kita baru menyadari perasaan yang tertutup kesibukan."}
  </p>
  <Tombol variant="soft" onClick={() => setTahap("pilih")}>Latihan lagi</Tombol>
+          <div style={{ marginTop: 10 }}>
+            <Tombol variant="ghost" onClick={() => window.dispatchEvent(new CustomEvent("ke-beranda"))}>
+              Kembali ke Beranda
+            </Tombol>
+          </div>
  </Kartu>
  )}
  </div>
@@ -913,6 +918,11 @@ function LayarBodyScan() {
  apakah bahu atau rahangmu terasa berbeda dibanding sebelum mulai?
  </p>
  <Tombol variant="soft" onClick={() => setMode("pembuka")}>Ulangi</Tombol>
+          <div style={{ marginTop: 10 }}>
+            <Tombol variant="ghost" onClick={() => window.dispatchEvent(new CustomEvent("ke-beranda"))}>
+              Kembali ke Beranda
+            </Tombol>
+          </div>
  </Kartu>
  )}
 
@@ -1228,6 +1238,11 @@ function LayarGrounding() {
  setSelesai(false);
  nyalakanLatar();
  }}>Mulai lagi</Tombol>
+          <div style={{ marginTop: 10 }}>
+            <Tombol variant="ghost" onClick={() => window.dispatchEvent(new CustomEvent("ke-beranda"))}>
+              Kembali ke Beranda
+            </Tombol>
+          </div>
  </Kartu>
  </div>
  );
@@ -1698,7 +1713,13 @@ function DinamisApp() {
  } catch (e) { hasil.musik = " error: " + e.message; setHasilTes({ ...hasil }); }
  };
 
- const masuk = () => {
+ useEffect(() => {
+    const handler = () => pindah("beranda");
+    window.addEventListener("ke-beranda", handler);
+    return () => window.removeEventListener("ke-beranda", handler);
+  }, []);
+
+  const masuk = () => {
  ctx(); // buka izin audio efek/musik dalam ketukan ini
  if (window.speechSynthesis) {
  // buka izin suara panduan di iPhone/iPad (perlu "dipancing"
@@ -1744,7 +1765,7 @@ function DinamisApp() {
  <div>Musik: {hasilTes.musik}</div>
  </div>
  )}
- <p style={{ color: "var(--line)", fontSize: 10, marginTop: 14 }}>v25</p>
+ <p style={{ color: "var(--line)", fontSize: 10, marginTop: 14 }}>v26</p>
  </div>
  );
  }
