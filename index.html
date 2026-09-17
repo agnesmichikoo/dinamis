@@ -1753,17 +1753,26 @@ function DinamisApp() {
  </div>
 
  <nav style={{
- position: "fixed", bottom: 0, left: 0, right: 0,
- background: "rgba(255,255,255,0.96)", backdropFilter: "blur(14px)",
- borderTop: "1px solid var(--line)",
- }}>
- {/* BARIS KESELAMATAN — selalu terlihat di semua halaman */}
- <div style={{
- textAlign: "center", padding: "5px 10px 2px",
- fontSize: 11, color: "var(--muted)", lineHeight: 1.5,
- }}>
- <div style={{ maxWidth: 480, margin: "0 auto", display: "flex" }}>
- {TAB.map((t) => (
+        position: "fixed", bottom: 0, left: 0, right: 0,
+        background: "rgba(255,255,255,0.96)", backdropFilter: "blur(14px)",
+        borderTop: "1px solid var(--line)",
+      }}>
+        <a href="tel:119" style={{ textDecoration: "none", display: "block" }}>
+          <div style={{
+            textAlign: "center", padding: "6px 12px 4px",
+            background: "linear-gradient(90deg, #f3f0ff, #ede9ff, #f3f0ff)",
+          }}>
+            <span className="display" style={{
+              fontSize: 12, letterSpacing: 2, textTransform: "uppercase",
+              color: "var(--primary-deep)", fontWeight: 700,
+            }}>For Severe Condition</span>
+            <span style={{ color: "var(--muted)", fontSize: 11, marginLeft: 8 }}>
+              Crisis Line · 119 ext 8
+            </span>
+          </div>
+        </a>
+        <div style={{ maxWidth: 480, margin: "0 auto", display: "flex" }}>
+          {TAB.map((t) => (
             <button key={t.key} onClick={() => pindah(t.key)} style={{
               flex: 1, background: "none", border: "none", cursor: "pointer",
               padding: "10px 0 16px", position: "relative",
@@ -1784,10 +1793,10 @@ function DinamisApp() {
               }}>{t.label}</div>
             </button>
           ))}
- </div>
- </nav>
- </div>
- );
+        </div>
+      </nav>
+    </div>
+    );
 }
 
 ReactDOM.createRoot(document.getElementById("root")).render(<DinamisApp />);
